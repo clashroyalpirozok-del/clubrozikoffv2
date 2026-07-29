@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "frontend/package.json",
+      "use": "@vercel/static-build",
+      "config": { "distDir": "build" }
+    }
+  ],
+  "routes": [
+    { "src": "/static/(.*)", "dest": "/frontend/build/static/$1" },
+    {
+      "src": "/(favicon.ico|manifest.json|robots.txt|asset-manifest.json|logo192.png|logo512.png)",
+      "dest": "/frontend/build/$1"
+    },
+    { "src": "/(.*)", "dest": "/frontend/build/index.html" }
+  ]
+}
